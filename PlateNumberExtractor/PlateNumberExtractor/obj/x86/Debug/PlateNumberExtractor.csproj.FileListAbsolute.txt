@@ -1,0 +1,16 @@
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\bin\Debug\PlateNumberExtractor.exe
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\bin\Debug\PlateNumberExtractor.pdb
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\bin\Debug\AForge.dll
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\bin\Debug\AForge.Imaging.dll
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\bin\Debug\AForge.Imaging.Formats.dll
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\bin\Debug\AForge.Math.dll
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\bin\Debug\AForge.xml
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\bin\Debug\AForge.Imaging.xml
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\bin\Debug\AForge.Imaging.Formats.xml
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\bin\Debug\AForge.Math.xml
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\obj\x86\Debug\PlateNumberExtractor.csprojResolveAssemblyReference.cache
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\obj\x86\Debug\PlateNumberExtractor.Form1.resources
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\obj\x86\Debug\PlateNumberExtractor.Properties.Resources.resources
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\obj\x86\Debug\PlateNumberExtractor.csproj.GenerateResource.Cache
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\obj\x86\Debug\PlateNumberExtractor.exe
+c:\users\azim\documents\visual studio 2010\Projects\PlateNumberExtractor\PlateNumberExtractor\obj\x86\Debug\PlateNumberExtractor.pdb
