@@ -40,7 +40,7 @@ namespace PlateNumberExtractor
             fs1.Add(new Crop(new Rectangle(Convert.ToInt32(img.Width * 0.25), 1, Convert.ToInt32(img.Width * 0.55), img.Height)));
             fs1.Add(new ResizeBilinear(700, 500));
             fs1.Add(new Grayscale(0.2125, 0.7154, 0.0721));
-            fs1.Add(new CannyEdgeDetector(10, 30, 0.5));
+            fs1.Add(new CannyEdgeDetector(10, 10, 0.5));
             //fs1.Add(new SobelEdgeDetector());
             //fs1.Add(new Dilatation());
             Bitmap segmented = fs1.Apply(img);
@@ -73,8 +73,8 @@ namespace PlateNumberExtractor
             bc.FilterBlobs = true;
             bc.MinWidth = 4;
             bc.MinHeight = 3;
-            bc.MaxHeight = 90;
-            bc.MaxWidth = 500;
+            bc.MaxHeight = 85;
+            bc.MaxWidth = 400;
             // set ordering options
             bc.ObjectsOrder = ObjectsOrder.Size;
             // process binary image
@@ -85,11 +85,16 @@ namespace PlateNumberExtractor
             SimpleShapeChecker shapeChecker = new SimpleShapeChecker();
             Blob[] rectBlobs = bc.GetObjectsInformation();
 
+            Pen whitePen = new Pen(Color.White, 2);
+
+            List<IntPoint> edgePoints = null;
+            List<IntPoint> corners = null;
+
             int blobNum = 0;
             for (int i = 0, n = blobs.Length; i < n; i++)
             {
-                List<IntPoint> edgePoints = bc.GetBlobsEdgePoints(blobs[i]);
-                List<IntPoint> corners;
+                edgePoints = bc.GetBlobsEdgePoints(blobs[i]);
+                corners = PointsCloud.FindQuadrilateralCorners(edgePoints);
 
                 if (shapeChecker.IsQuadrilateral(edgePoints, out corners))
                 {
@@ -99,11 +104,16 @@ namespace PlateNumberExtractor
             }
 
 
+            
+
 
 
             //MessageBox.Show(bc.ObjectsCount.ToString());
             // extract the biggest blob
             Bitmap blbImg = null;
+
+           
+
             //if (blobs.Length > 0)
             //{
             //    bc.ExtractBlobsImage(outlinedImg, blobs[0], true);
@@ -114,7 +124,20 @@ namespace PlateNumberExtractor
             {
                 bc.ExtractBlobsImage(outlinedImg, rectBlobs[0], true);
                 blbImg = rectBlobs[0].Image.ToManagedImage();
+
+                edgePoints = bc.GetBlobsEdgePoints(rectBlobs[0]);
+                corners = PointsCloud.FindQuadrilateralCorners(edgePoints);
+                Graphics g = Graphics.FromImage(blbImg);
+                if (shapeChecker.IsQuadrilateral(edgePoints, out corners))
+                {
+                    g.DrawPolygon(whitePen, corners.Select(p => new System.Drawing.Point(p.X, p.Y)).ToArray());
+                }
+                whitePen.Dispose();
+                g.Dispose();
             }
+
+            
+            
 
 
             pictureBox4.Image = blbImg;
