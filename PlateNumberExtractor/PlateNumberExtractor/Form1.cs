@@ -37,7 +37,7 @@ namespace PlateNumberExtractor
         {
             //Create filter sequence for segmentation process
             FiltersSequence fs1 = new FiltersSequence();
-            fs1.Add(new Crop(new Rectangle(Convert.ToInt32(img.Width * 0.25), 1, Convert.ToInt32(img.Width * 0.55), img.Height)));
+            fs1.Add(new Crop(new Rectangle(Convert.ToInt32(img.Width * 0.25), 5, Convert.ToInt32(img.Width * 0.55), img.Height)));
             fs1.Add(new ResizeBilinear(700, 500));
             fs1.Add(new Grayscale(0.2125, 0.7154, 0.0721));
             fs1.Add(new CannyEdgeDetector(10, 10, 0.5));
@@ -49,7 +49,7 @@ namespace PlateNumberExtractor
 
             //Create outlined image
             FiltersSequence fs2 = new FiltersSequence();
-            fs2.Add(new Crop(new Rectangle(Convert.ToInt32(img.Width * 0.25), 1, Convert.ToInt32(img.Width * 0.55), img.Height)));
+            fs2.Add(new Crop(new Rectangle(Convert.ToInt32(img.Width * 0.25), 5, Convert.ToInt32(img.Width * 0.55), img.Height)));
             fs2.Add(new ResizeBilinear(700, 500));
             Bitmap outlinedImg = fs2.Apply(img);
             Invert invFilter = new Invert();
@@ -154,7 +154,7 @@ namespace PlateNumberExtractor
 
             //Remove plate number frame
             FiltersSequence fs4 = new FiltersSequence();
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 7; i++)
             {
                 fs4.Add(new Erosion());
             }
@@ -183,8 +183,9 @@ namespace PlateNumberExtractor
             //Refine image
             FiltersSequence fs5 = new FiltersSequence();
             fs5.Add(new Grayscale(0.2125, 0.7154, 0.0721));
+            //fs5.Add(new GrayscaleY());
             fs5.Add(new Erosion());
-            fs5.Add(new Threshold());
+            fs5.Add(new Threshold(70));
             fs5.Add(new Invert());
             fs5.Add(new Opening());
             fs5.Add(new Opening());
